@@ -1,1 +1,1 @@
-open jdek 17 version
+open jdk 17 version
