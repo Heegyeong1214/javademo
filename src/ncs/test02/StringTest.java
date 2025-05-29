@@ -10,16 +10,25 @@ public class StringTest {
 	      double sum = 0; 
 	 
 	    // str에서 데이터를 분리한다. 
-	     String[] st = str.split(",");   
+	     String[] st = str.split(","); 
+	     
+	     for(int i=0; i < st.length; i++) {
+	    	 sum = sum + Double.parseDouble(st[i]);
+	    	 
+	     }
+	     
 	     
 	     
 	         //for(){     //for~each 문 사용한다. 
 	         
 	  // 배열에 실수 데이터를 넣는다. 
 	  //배열 데이터의 합을 구한다.
+	     System.out.printf("합계:%3f\n", sum);
+	     System.out.printf("평균:%3f\n", sum/st.length);
+	     
 	        	 
 	}   
-	 
+	
 	        // 결과 값을 출력 한다.      
 	}  
 	
