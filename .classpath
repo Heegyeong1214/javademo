@@ -6,6 +6,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/web_ai/util/logback-classic-1.4.6.jar"/>
+	<classpathentry kind="lib" path="C:/web_ai/util/logback-core-1.4.6.jar"/>
+	<classpathentry kind="lib" path="C:/web_ai/util/slf4j-api-2.0.10.jar"/>
 	<classpathentry kind="lib" path="C:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="C:/web_ai/util/eclipse-jee-2023-09-R-win32-x86_64/eclipse/lombok.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

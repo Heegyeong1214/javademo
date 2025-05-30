@@ -1,5 +1,5 @@
 package java021_jdbc.part02;
-
+//트랜젝션 처리
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -34,4 +34,23 @@ public class DepartmentsService {
 		return aList;
 	}
 	
+	public List<DepartmentsDTO> getSearchList(String search){
+		List<DepartmentsDTO> aList = null;
+		Connection conn = JdbcTemplate.getConnection();
+		dao = DepartmentsDAO.getInstance();
+		
+		try {
+			conn.setAutoCommit(false); //JDBC는 커밋이 자동 설정되어 있어자동 커밋 해제
+			aList=dao.getSearchMethod(conn, search);
+			JdbcTemplate.commit(conn);
+			//Try하다가 실수하면 rollback 해줘야 함
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JdbcTemplate.rollback(conn);
+		} finally {
+			JdbcTemplate.close(conn);
+		}
+		return aList;
+		
+	}//end getSearchList()
 }//end class

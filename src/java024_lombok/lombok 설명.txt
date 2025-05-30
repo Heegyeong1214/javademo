@@ -1,0 +1,61 @@
+[1]  lombok은 테이블을 구조화한 도메인 클래스(Entity, DTO, VO)에서 필요한 메서드와
+ logging작업을 용이하게 작업할 수 있게 제공해주는 라이브러리이다.
+ 
+@Data 어노테이션은  @Getter, @Setter @ToString, @EqualsAndHashCode @RequiredArgsContructor을 제공해준다.
+class의 모든 필드에 대한 getter, setter, toString, equals 같은 모든 보일러플레이트(boilerplate=재사용 가능한 코드)를 생성한다.
+
+https://projectlombok.org/features/Data
+https://projectlombok.org/features/
+
+[2] 롬복 설치
+1. lombok1.18.12을 다운후 eclipse.exe파일이 있는 위치로 이동한다.
+2. 명령 프롬프트(cmd)을 관리자 권한으로 실행후 C:\Program Files\Java\jdk-17.0.10.7-hotspot\bin 이동한다.
+3. java -jar D:\ai_chatbot\util\eclipse\lombok-1.18.22.jar  입력후 엔터
+4. Specity location...버튼을 클릭후 D:\ai_chatbot\util\eclipse\eclipse.exe을 선택한다.
+5. Install/Update 버튼을 클릭한다. Install successful 메세지가 있으면 성공적으로 설치가 되었다.
+6. Quit Installer 버튼을 선택후 종료한다.
+7. 프로젝트에서  단축메뉴 > Properties > Java Build Path > Libraries > Classpath > 
+   Add External JARs... > lombok.jar > Apply and Close
+8. eclipse.ini 아래에
+    -vmargs
+    -javaagent:D:\ai_chatbot\util\eclipse\lombok.jar  
+9.  프로젝트에서 빨강줄이 나오면 프로젝트선택후 > Project > Clean >Clean
+
+[3] lombok.config설정
+  Project root path에 위치에 lombok.config파일을 생성해서  세부적인 설정을 적용할 수 있다. 
+  lombok.{해당어노테이션}.flagUsage=
+  
+
+[4] lombok 삭제
+1. D:\ai_chatbot\util\eclipse\lombok-1.18.22.jar이 있는 위치로 가서 lombok을 더블클릭해서 실행을 한다.
+2. IDEs에서 설치되여 있는 c:\...\eclipse.exe파일명 옆에 빨강고추모양이 나오면 설치가 되여 있다는 것이므로
+   Uninstall lombok from selected IDE installations을 클릭한다.
+3. Yes-uninstall Lombok을 클릭하고 OK을 누른다.
+4. Uninstall lombok from selected IDE installations을 클릭하고  
+  c:\...\eclipse.exe파일명 오른쪽을 보면 빨강고추모양이 없어졌으면 정상적으로
+ 삭제가 되었다.
+
+///////////////////////////////////////////////////////////////////
+
+lombok 설치방법
+https://congsong.tistory.com/31
+
+롬복 사용 시 주의사항
+https://jake-seo-dev.tistory.com/70
+
+lombok 삭제
+https://standard-stereotype.tistory.com/2
+
+lombok annotation 상세설명
+https://siahn95.tistory.com/171
+https://firstblog912.tistory.com/228
+https://partnerjun.tistory.com/53
+https://dejavuhyo.github.io/posts/precautions-for-using-spring-lombok/
+https://dev-splin.github.io/spring/Spring-Lombok/
+https://blog.hexabrain.net/398
+https://kils-log-of-develop.tistory.com/598
+https://bkjeon1614.tistory.com/657
+
+
+[SpringBoot] Logback 대신 Log4j2를 사용해야 하는 이유
+https://blog.naver.com/sqlpro/223132863513

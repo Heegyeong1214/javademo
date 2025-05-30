@@ -1,6 +1,8 @@
 package java021_jdbc.part02;
+//DAO: Data Access Object (DTO로 저장한 데이터를 template(로그인)으로 접근하기 위함)
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,7 +11,6 @@ import java.util.List;
 
 import java021_jdbc.template.JdbcTemplate;
 
-//DAO: Data Access Object (DTO로 저장한 데이터를 template(로그인)으로 접근하기 위함)
 public class DepartmentsDAO {
 	private static DepartmentsDAO dao = new DepartmentsDAO();
 	
@@ -56,7 +57,49 @@ public class DepartmentsDAO {
 		
 		
 		return aList;
-	}
+	}//end getListMethod()
+	
+	public List<DepartmentsDTO> getSearchMethod(Connection conn, String search){
+		List<DepartmentsDTO> aList = new ArrayList<DepartmentsDTO>();
+		Statement stmt = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+//			stmt = conn.createStatement();
+//			//search는 변수이고 이를 참조하기 위해 
+//			String sql = "SELECT * FROM departments WHERE department_name LIKE '%" + search +"%' ORDER BY department_id";
+//			//쿼리문 실행하기 위한 Method(executeQuery)이고 그 결과값이 rs
+//			rs=stmt.executeQuery(sql);
+			
+			String sql = "SELECT * FROM departments WHERE department_name LIKE ? ORDER BY department_id";
+					pstmt = conn.prepareStatement(sql);
+					//Like 뒤에 있는 ?이 String이라서 setString, int이면 Setint
+					pstmt.setString(1,'%' +search+'%');
+					rs = pstmt.executeQuery();
+			
+			//departDTO에 쿼리를 담아서 aList에 추가
+			while(rs.next()) {
+				DepartmentsDTO dto = new DepartmentsDTO();
+				dto.setDepartment_id(rs.getInt("department_id"));
+				dto.setDepartment_name(rs.getString("department_name"));
+				dto.setManager_id(rs.getInt("manager_id"));
+				dto.setLocation_id(rs.getInt("location_id"));
+				aList.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JdbcTemplate.close(rs);
+			JdbcTemplate.close(stmt);
+		}
+		
+		
+		return aList;
+		
+	}//end getSearchMethod()
+
 	
 	
 }//end class

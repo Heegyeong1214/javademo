@@ -1,0 +1,96 @@
+slf4j-api-2.0.10.jar
+logback-classic-1.4.6.jar
+logback-core-1.4.6.jar
+
+
+1. System.out.println("debug message");
+프로그램을 실행할때마다 디버깅을 위한 메시지가 출력된다.
+이는 프로그램의 성능을 떨어트린다.
+따라서 개발 중 추가한 디버깅 메시지를 실 서비스하는 시점에 제거해야 한다.
+
+2. 로그(log)
+   로그(log)는 기록을 남기는 것으로 로깅을 하면 앱 개발시 운영 중 발생하는 문제점을 모니터링하거나 추적하는 데 용이하다.
+
+3.  Slf4J (Simple Logging Facade for Java)
+    의 약자로 라이브러리 인터페이스 역할
+    Log4j, Logback, Log4j2를 지원하고, 로깅을 처리할 때의 표준
+3. logging framework (Log4j, Logback, Log4j2)
+  로깅(logging) 프레임워크를 활용해 디버깅 메시지를 레벨화한다.
+(1)LOG4J
+(2)LOGBack (The Generic, Reeliable Fast & Flexiable Logging Framework)
+    https://logback.qos.ch/manual/appenders.html
+ 1)Level 
+   TRACE - DEBUG - INFO - WARN - ERROR 순으로 오른쪽으로 갈수록 높은레벨
+ 2)Appender
+
+   ①이벤트마다 로그를 기록하는 기능을 처리하는 객체로, 로그의 출력위치, 출력형식등을 설정한다.
+   ②logback-core모듈에는 3가지 기본 Appender이 있다.
+      - ConsoleAppender : 로그를 콘솔에 출력
+      - FileAppender : 로그를 지정 파일에 기록
+      - RollingFileAppender : FileAppender을 상속받았으며 날짜와 용량등을 설정해서 패턴에 따라 로그가 각기 다른 파일에 기록되게 할 수 있다.
+   ③logback-classic 모듈을 이용하면 SSLSocketAppender, SMTPAppender, DBAppender 사용하여 원격에 로그를 기록할 수 있다.
+   ④ Appender들의 하위 항목으로 출력 형식(Layout Pattern)을 지정하여 각 Appender마다 원하는 내용을 출력시킬 수 있다.
+       ex) %logger(Logger 이름), %thread(현재 스레드명), %level(로그 레벨), %msg(로그메시지), %n(new line) 등
+     
+  3)Logger
+    실제 로그 기능을 수행하는 객체이며 각 Logger마다 name을 통해 구분한다. 
+각 Logger 마다 원하는 출력 레벨값을 설정할 수 있으며, 0개 이상의 Appender를 지정할 수 있다.
+    최상위 로거인 Root Logger를 설정하면 이를 계층적으로 활용할 수 있다.
+   로그작성 Pattern
+  %logger{length} : Logger name을 축약 할 수 있다. {length}는 최대 글자 수 ex)logger{35}
+  %-5level : 로그 레벨, -5는 출력의 고정폭 값(5글자)
+  %msg : - 로그 메세지(=%message)
+  ${PID:-} : 프로세스 아이디
+  %d : 로그 기록시간
+  %p : 로깅 레벨
+  %F : 로깅이 발생한 프로그램 파일명
+  %M : 로깅일 발생한 메소드의 명
+  %I : 로깅이 발생한 호출지의 정보
+  %L : 로깅이 발생한 호출지의 라인 수
+  %thread : 현재 Thread 명
+  %t : 로깅이 발생한 Threrad명
+  %c : 로깅이 발생한 카테고리
+  %C : 로깅이 발생한 클래스 명
+  %m : 로그 메세지
+  %n : 줄바꿈
+  %% : %를 출력
+  %r : 애플리케이션 시작 이후 부터 로깅이 발생한 시점 까지의 시간(ms)
+   <STARTTLS>true</STARTTLS>
+(3)LOG4J2
+
+https://logback.qos.ch/manual/appenders.html
+
+순수자바에서 구현
+https://nhs0912.tistory.com/89
+
+패턴 속성 지정
+https://steady-snail.tistory.com/307
+
+java에서-logback을-이용한-로깅logging-사용법
+https://thinkwarelab.wordpress.com/2016/11/18/java%EC%97%90%EC%84%9C-logback%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%A1%9C%EA%B9%85logging-%EC%82%AC%EC%9A%A9%EB%B2%95/
+
+Spring boot 에서는 logback.xml로 설정하면 스프링 부트에대한 설정전에 로그백 설정이 되므로 제어 할 수가 없다.
+https://dadadamarine.github.io/java/spring/2019/05/01/spring-logging-xml.html
+
+DBAppender를 이용한 logging
+https://agileryuhaeul.tistory.com/entry/Logback-%EC%9D%B4%EB%9E%80
+http://www.talkdev.net/logback-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B02/
+
+https://livenow14.tistory.com/64
+
+
+https://logback.qos.ch/download.html
+http://www.slf4j.org/download.html
+https://thinkwarelab.wordpress.com/2016/11/18/java%ec%97%90%ec%84%9c-logback%ec%9d%84-%ec%9d%b4%ec%9a%a9%ed%95%9c-%eb%a1%9c%ea%b9%85logging-%ec%82%ac%ec%9a%a9%eb%b2%95/
+https://sonegy.wordpress.com/2014/05/23/how-to-slf4j/
+https://int-i.github.io/java/2022-10-02/slf4j-logback/
+Facade패턴
+https://m.blog.naver.com/ygj01069/222422798246
+https://yjh5369.tistory.com/entry/java%EC%97%90%EC%84%9C-logbackxml-%EA%B2%BD%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95
+https://ckddn9496.tistory.com/76
+https://yjh5369.tistory.com/entry/java%EC%97%90%EC%84%9C-logback-%EC%82%AC%EC%9A%A9
+https://dololak.tistory.com/632
+https://blog.naver.com/mk_crew/222886334827
+https://mkyong.com/
+https://loosie.tistory.com/825
+https://ckddn9496.tistory.com/82
