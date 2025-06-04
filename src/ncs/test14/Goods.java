@@ -1,21 +1,23 @@
-package ncs.test04;
+package ncs.test14;
 
-public class Product {
+public class Goods {
+
 	String name;
 	int price;
 	int quantity;
 
-	public Product() {
-		// TODO Auto-generated constructor stub
+	public Goods() {
+		
 	}
 
-	public Product(String name, int price, int quantity) {
+	public Goods(String name, int price, int quantity) {
+		super();
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;
-
 	}
 
+	
 	public String getName() {
 		return name;
 	}
@@ -39,10 +41,12 @@ public class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	public String information() {
-		String.format(getName(), getPrice(), getQuantity());
-		
-		return null;
+
+	@Override
+	public String toString() {
+		return String.format(getName(), getPrice(), getQuantity());
 	}
-}// end class
+	
+	
+	
+}

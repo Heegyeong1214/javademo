@@ -22,8 +22,8 @@ public class BookArrayTest {
 
 
 		for(int i = 0; i < bArray.length; i++) {
-			System.out.printf("%s, %s, %d원, %f%%할인\n", bArray[i].gettitle(), bArray[i].getauthor(), bArray[i].getprice(), bArray[i].getdisconutRate()*100);
-			System.out.printf("할인된 가격: %f원\n", bArray[i].getprice()-(bArray[i].getprice()*bArray[i].getdisconutRate()));
+			System.out.printf("%s, %s, %d원, %.0f%% 할인\n", bArray[i].gettitle(), bArray[i].getauthor(), bArray[i].getprice(), bArray[i].getdisconutRate()*100);
+			System.out.printf("할인된 가격: %.0f원\n", bArray[i].getprice()-(bArray[i].getprice()*bArray[i].getdisconutRate()));
 		}
 	}//end main()
 	

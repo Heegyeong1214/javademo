@@ -18,6 +18,22 @@ public class UserTest {
 		for (int i = 0; i < users.length; i++) {
 			System.out.println(users[i].toString());
 		}
+		
+		User[] copyUsers = new User[users.length];
+		
+		users.clone();
+		
+		System.out.println("copy USers -------------------------------------------------------------------");
+		for(int j = 0; j <copyUsers.length; j++) {
+			System.out.println(copyUsers[j].toString());
+		}
+		
+		System.out.println("비교결과----------------------------------");
+		
+	
+			
+		
+		
 	}// end main()
 
 }// end class
